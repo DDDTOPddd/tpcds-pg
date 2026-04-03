@@ -39,3 +39,8 @@ tags
 
 # Flat files
 *.dat
+
+# tpcds查询数据
+tpcds_query
+
+/*.log
