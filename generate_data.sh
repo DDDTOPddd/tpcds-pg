@@ -7,7 +7,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 DSGEN_PATH="${DSGEN_PATH:-${BASE_DIR}}"
 DSDGEN_PARALLEL="${DSDGEN_PARALLEL:-4}"
-DSQGEN_SCALE="${DSQGEN_SCALE:-1}"
+DSQGEN_SCALE="${DSQGEN_SCALE:-10}" # 数据规模
 DSQGEN_DIALECT="${DSQGEN_DIALECT:-postgresql}"
 
 declare -a dsdgen_pids=()
@@ -19,7 +19,7 @@ declare -a dsqgen_pids=()
 # ==========================================================
 generate_dat_data() {
     local TOOLS_DIR=${1:-"${DSGEN_PATH}/tools"}
-    local SCALE=${2:-1}   # 默认生成 1GB
+    local SCALE=${2:-1}   
     local child
 
     cd "$TOOLS_DIR" || {
@@ -124,7 +124,7 @@ wait_generate_jobs() {
 }
 
 generate_dat_data "${DSGEN_PATH}/tools" "${DSQGEN_SCALE}" || exit 1
-generate_query_data || exit 1
+# generate_query_data || exit 1
 wait_generate_jobs || exit 1
 
 # 数据生成完成后，由于我们使用了 -terminate n 参数，已经不需要去出管线符

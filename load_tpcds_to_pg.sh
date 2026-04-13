@@ -9,7 +9,7 @@ DAT_DIR="${BASE_DIR}/tpcds_data"
 
 # ============== 数据库连接配置 ==============
 # 根据刚才的 Python 测试文件提取的配置
-DB_NAME="${TPCDS_DB_NAME:-tpcds_1g}"
+DB_NAME="${TPCDS_DB_NAME:-tpcds_10g}"
 DB_USER="${TPCDS_DB_USER:-dddtop}"
 DB_PASS="${TPCDS_DB_PASS:-8414}"
 DB_HOST="${TPCDS_DB_HOST:-localhost}"
